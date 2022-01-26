@@ -1,0 +1,26 @@
+<div class="main-content">
+
+    <div class="section-content section-content-p-30">
+        <div class="container">
+            <div class="form-area">
+                <h3>Choose Address</h3>
+                <div *ngIf="addresses.length>0">
+                    <div>
+                        <select [(ngModel)]="selectedAddress" (change)="addressSelected()"> Choose Address
+                            <option *ngFor="let a of addresses" [ngValue]="a">{{a.street}} {{a.city}} {{a.state}} {{a.zipCode}} {{a.country}}</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <button routerLink="/addAddress" class="btn btn-primary">Add Address</button>
+
+            <br><br><br>
+
+            <button routerLink="/checkout" class="btn btn-primary" [disabled]="!selectedAddress">Proceed To Pay</button>
+
+        </div>
+    </div>
+
+</div>

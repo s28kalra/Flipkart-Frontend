@@ -1,0 +1,21 @@
+<!-- MENU SIDEBAR-->
+<aside class="menu-sidebar d-none d-lg-block">
+    <div class="logo">
+        <a routerLink="/products">
+            <img src="assets\flipkart-logo.jpg" alt="flipkart" class="img-responsive">
+        </a>
+    </div>
+    <div class="menu-sidebar-content js-scrollbar1">
+        <nav class="navbar-sidebar">
+            <ul class="list-unstyled navbar-list">
+                <li>
+                    <a routerLink="products" routerLinkActive="active-link">All Products</a>
+                </li>
+                <li *ngFor="let c of categories">
+                    <a routerLink="category/{{c.categoryId}}" routerLinkActive="active-link">{{c.categoryName}}</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>
+<!-- END MENU SIDEBAR-->

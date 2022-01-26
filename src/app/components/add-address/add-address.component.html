@@ -1,0 +1,134 @@
+<div class="main-content">
+    <div class="section-content section-ccontent-p30">
+        <div class="container">
+
+            <form [formGroup]="addressFormGroup" (ngSubmit)="addAddress()">
+
+                <div formGroupName="address" class="form-area">
+                    <h3>Add Address</h3>
+
+                    <div class="row">
+                        <div class="col-md-2"><span style="color: red;">* </span><label>Zip Code </label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="zipcode" type="text" (change)="getDetailsFromZipcode()">
+
+                                <div *ngIf="zipcode?.invalid && (zipcode?.touched || zipcode?.dirty)"
+                                    class="alert alert-danger mt-1">
+
+                                    <div *ngIf="zipcode?.errors!['required']; else zipcodeError">
+                                        Zip Code is Required
+                                    </div>
+
+                                    <ng-template #zipcodeError>
+                                        <div *ngIf="zipcode?.errors!['pattern']">
+                                            Enter Valid Zip Code as XXXXX
+                                        </div>
+                                    </ng-template>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><span style="color: red;">* </span><label>Street </label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="street" type="text">
+
+                                <div *ngIf="street?.invalid && (street?.touched || street?.dirty)"
+                                    class="alert alert-danger mt-1">
+
+                                    <div
+                                        *ngIf="street?.errors!['required'] || street?.errors!['notOnlyWhiteSpace'] else streetError">
+                                        Street is Required
+                                    </div>
+                                    <ng-template #streetError>
+                                        <div *ngIf="street?.errors!['minlength']">
+                                            Street must has 2 characters
+                                        </div>
+                                    </ng-template>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><span style="color: red;">* </span><label>Country </label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="country" type="text" (change)="getStates()">
+                                    <option *ngFor="let c of countries" [ngValue]="c">{{c.name}}</option>
+                                </select>
+
+                                <div *ngIf="country?.invalid && (country?.touched || country?.dirty)"
+                                    class="alert alert-danger mt-1">
+
+                                    <div *ngIf="country?.errors!['required']">
+                                        Choose appropriate Country
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><span style="color: red;">* </span><label>State </label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="state" type="text">
+                                    <option [ngValue]="s.name" *ngFor="let s of states">{{s.name}}</option>
+                                </select>
+
+                                <div *ngIf="state?.invalid && (state?.dirty || state?.touched)"
+                                    class="alert alert-danger mt-1">
+
+                                    <div *ngIf="state?.errors!['required']">
+                                        Choose Appropriate State
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><span style="color: red;">* </span><label>City </label></div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="city" type="text">
+
+                                <div *ngIf="city?.invalid &&(city?.touched || city?.dirty)"
+                                    class="alert alert-danger mt-1">
+
+                                    <div
+                                        *ngIf="city?.errors!['required'] || city?.errors!['notOnlyWhiteSpace'] else cityError">
+                                        City is Required
+                                    </div>
+                                    <ng-template #cityError>
+                                        <div *ngIf="city?.errors!['pattern']">
+                                            Enter Valid City
+                                        </div>
+                                    </ng-template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-info"
+                        [disabled]="addressFormGroup.invalid || preventMultipleClicks">Add Address</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

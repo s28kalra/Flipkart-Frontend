@@ -1,0 +1,29 @@
+ng add @angular/localize --save
+npm install bootstrap --save
+npm install @ng-bootstrap/ng-bootstrap --save
+npm install @okta/okta-signin-widget --save
+npm i @okta/okta-angular@3.2.2 --save
+npm install ngx-bootstrap-spinner --save
+npm install @fortawesome/fontawesome-free --save
+
+in angular.json file
+"styles": [
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.css",
+              "node_modules/@okta/@okta-signin-widget/dist/css/okta-sign-in.min.css"
+            ],
+
+// command to create key in spring java
+Visit this link
+https://github.com/darbyluv2code/fullstack-angular-and-springboot/blob/master/bonus-content/secure-https-communication/keytool-steps.md
+keytool -genkeypair -alias flipkart -keystore src/main/resources/flipkart-keystore.p12 -keypass secret -storeType PKCS12 -storepass secret -keyalg RSA -keysize 2048 -validity 365 -dname "C=US, ST=Pennsylvania, L=Philadelphia, O=flipkart, OU=Training Backend, CN=localhost" -ext "SAN=dns:localhost"
+
+
+-- Card Stripe Payment--
+Only this card will work 378282246310005
+-- testing card link
+https://stripe.com/docs/testing#charges-api
+
+
+"serve": "ng serve --ssl=true --sslKey=./ssl-localhost/localhost.key --sslCert=./ssl-localhost/localhost.crt",
